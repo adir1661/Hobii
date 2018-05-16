@@ -1,8 +1,9 @@
-package com.hobii;
+package com.hobii.controller;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,8 +14,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.hobii.R;
+import com.skyfishjy.library.RippleBackground;
+
 public class Navigation extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener ,View.OnClickListener {
+    private RecyclerView mainTable;
+    private RecyclerView secondaryTable;
+    private FloatingActionButton bStartChallange;
+    private RippleBackground rippleBackground;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +51,9 @@ public class Navigation extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        rippleBackground=(RippleBackground)findViewById(R.id.content);
+        rippleBackground.startRippleAnimation();
+
     }
 
     @Override
@@ -97,5 +111,19 @@ public class Navigation extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    private void findViews() {
+        mainTable = findViewById( R.id.mainTable );
+        secondaryTable = findViewById( R.id.secondaryTable );
+        bStartChallange = findViewById( R.id.bStartChallange );
+        bStartChallange.setOnClickListener( this );
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        if ( v == bStartChallange ) {
+            rippleBackground.stopRippleAnimation();
+        }
     }
 }
