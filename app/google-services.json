@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "677563757743",
+    "firebase_url": "https://hobii-community.firebaseio.com",
+    "project_id": "hobii-community",
+    "storage_bucket": "hobii-community.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677563757743:android:e63c941814f0a666",
+        "android_client_info": {
+          "package_name": "com.hobii"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "677563757743-oscav301ss49hcagch3142erjfkoohju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHAM2Q7xXSrP-Bh5GHBQ95MIqU8FFfcWU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

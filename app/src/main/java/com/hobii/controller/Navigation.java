@@ -3,6 +3,7 @@ package com.hobii.controller;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,13 +16,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hobii.R;
+import com.hobii.model.datasource.UserList;
 import com.skyfishjy.library.RippleBackground;
 
 public class Navigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,View.OnClickListener {
     private RecyclerView mainTable;
     private RecyclerView secondaryTable;
-    private FloatingActionButton bStartChallange;
+    private FloatingActionButton bStartChallenge;
     private RippleBackground rippleBackground;
 
 
@@ -31,6 +33,7 @@ public class Navigation extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+        findViews();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -51,8 +54,17 @@ public class Navigation extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        rippleBackground=(RippleBackground)findViewById(R.id.content);
         rippleBackground.startRippleAnimation();
+
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mainTable.setLayoutManager(mLayoutManager);
+        TableAdapter adapter = new TableAdapter(this,R.layout.main_table_item,new UserList().getUsers());
+        mainTable.setAdapter(adapter);
+
+        LinearLayoutManager mLayoutManager2 = new LinearLayoutManager(this);
+        secondaryTable.setLayoutManager(mLayoutManager2);
+        TableAdapter adapter2 = new TableAdapter(this,R.layout.main_table_item,new UserList().getUsers());
+        secondaryTable.setAdapter(adapter2);
 
     }
 
@@ -115,15 +127,19 @@ public class Navigation extends AppCompatActivity
     private void findViews() {
         mainTable = findViewById( R.id.mainTable );
         secondaryTable = findViewById( R.id.secondaryTable );
-        bStartChallange = findViewById( R.id.bStartChallange );
-        bStartChallange.setOnClickListener( this );
+        bStartChallenge = findViewById( R.id.bStartChallenge);
+        rippleBackground = findViewById(R.id.rippleAnim);
+        bStartChallenge.setOnClickListener( this );
     }
 
 
     @Override
     public void onClick(View v) {
-        if ( v == bStartChallange ) {
+        if ( v == bStartChallenge) {
+            if (rippleBackground.isRippleAnimationRunning())
             rippleBackground.stopRippleAnimation();
+            else
+                rippleBackground.startRippleAnimation();
         }
     }
 }

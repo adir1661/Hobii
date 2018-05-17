@@ -7,7 +7,8 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.hobii.controller.Navigation"
-    tools:showIn="@layout/app_bar_navigation">
+    tools:showIn="@layout/app_bar_navigation"
+    >
 
     <!--<ScrollView-->
     <!--android:layout_width="match_parent"-->
@@ -23,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:shadowColor="#000000"
-        android:shadowDx="2"
+        android:shadowColor="#838383"
+        android:shadowDx="3"
         android:shadowDy="2"
-        android:shadowRadius="1"
+        android:shadowRadius="2"
         android:text="Hobii"
         android:textColor="@color/white"
         android:textSize="40dp"
@@ -57,7 +58,7 @@
         <com.skyfishjy.library.RippleBackground
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/content"
+            android:id="@+id/rippleAnim"
             android:layout_width="180dp"
             android:layout_height="180dp"
             app:rb_color="@color/colorAccent"
@@ -67,7 +68,7 @@
             app:rb_scale="6">
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/bStartChallange"
+                android:id="@+id/bStartChallenge"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_centerInParent="true"
